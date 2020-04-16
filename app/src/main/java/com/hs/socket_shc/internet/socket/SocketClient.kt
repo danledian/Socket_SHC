@@ -1,7 +1,7 @@
-package com.hs.websocket_shc.internet.socket
+package com.hs.socket_shc.internet.socket
 
 import android.util.Log
-import com.hs.websocket_shc.Constants
+import com.hs.socket_shc.Constants
 import io.socket.client.IO
 import io.socket.client.Socket
 import org.json.JSONObject

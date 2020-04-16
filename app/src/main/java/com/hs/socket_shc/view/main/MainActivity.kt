@@ -1,9 +1,9 @@
-package com.hs.websocket_shc.view.main
+package com.hs.socket_shc.view.main
 
 import android.view.View
-import com.hs.websocket_shc.Constants
-import com.hs.websocket_shc.R
-import com.hs.websocket_shc.base.BaseActivity
+import com.hs.socket_shc.Constants
+import com.hs.socket_shc.R
+import com.hs.socket_shc.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 

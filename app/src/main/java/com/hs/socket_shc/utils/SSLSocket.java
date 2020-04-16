@@ -1,4 +1,4 @@
-package com.hs.websocket_shc.utils;
+package com.hs.socket_shc.utils;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;

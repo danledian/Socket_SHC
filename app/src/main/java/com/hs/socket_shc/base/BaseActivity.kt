@@ -1,4 +1,4 @@
-package com.hs.websocket_shc.base
+package com.hs.socket_shc.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

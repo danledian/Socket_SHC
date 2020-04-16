@@ -1,4 +1,4 @@
-package com.hs.websocket_shc
+package com.hs.socket_shc
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("com.hs.websocket_shc", appContext.packageName)
+        assertEquals("com.hs.socket_shc", appContext.packageName)
     }
 }

@@ -1,6 +1,6 @@
-package com.hs.websocket_shc.internet.socket
+package com.hs.socket_shc.internet.socket
 
-import com.hs.websocket_shc.Constants
+import com.hs.socket_shc.Constants
 
 interface SocketClientStatusChangeListener {
 

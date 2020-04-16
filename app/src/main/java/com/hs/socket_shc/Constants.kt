@@ -1,4 +1,4 @@
-package com.hs.websocket_shc
+package com.hs.socket_shc
 
 public class Constants {
 

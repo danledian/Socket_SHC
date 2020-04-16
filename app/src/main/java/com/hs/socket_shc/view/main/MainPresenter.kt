@@ -1,10 +1,10 @@
-package com.hs.websocket_shc.view.main
+package com.hs.socket_shc.view.main
 
 import android.util.Log
-import com.hs.websocket_shc.Constants
-import com.hs.websocket_shc.base.BasePresenter
-import com.hs.websocket_shc.internet.socket.SocketClient
-import com.hs.websocket_shc.internet.socket.SocketClientStatusChangeListener
+import com.hs.socket_shc.Constants
+import com.hs.socket_shc.base.BasePresenter
+import com.hs.socket_shc.internet.socket.SocketClient
+import com.hs.socket_shc.internet.socket.SocketClientStatusChangeListener
 
 private const val TAG = "MainPresenter"
 class MainPresenter: BasePresenter<MainInterface.IMainView>(), MainInterface.IMainPresenter, SocketClientStatusChangeListener {
