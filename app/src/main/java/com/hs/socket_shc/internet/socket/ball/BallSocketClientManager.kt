@@ -18,10 +18,10 @@ object BallSocketClientManager : SocketClientStatusChangeListener, SocketDataRes
     private var mSocket: Socket? = null
     private var mSocketClientStatusChangeListener: SocketClientStatusChangeListener? = null
     private var mSocketDataListener: SocketDataListener? = null
-    private var mOnlineStatusProcessor: ClientOnlineProcessor? = null
+    private var mOnlineStatusProcessor: SocketDataProcessor? = null
 
     init {
-        mOnlineStatusProcessor = ClientOnlineProcessor(this)
+        mOnlineStatusProcessor = SocketDataProcessor(this)
     }
 
     fun connect(uri: String, listener: SocketClientStatusChangeListener){

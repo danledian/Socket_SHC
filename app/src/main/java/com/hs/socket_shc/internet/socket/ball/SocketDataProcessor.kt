@@ -7,8 +7,8 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.util.*
 
-private const val TAG = "ClientOnlineProcessor"
-class ClientOnlineProcessor(private val listener: SocketDataResponse): SocketProcessor {
+private const val TAG = "SocketDataProcessor"
+class SocketDataProcessor(private val listener: SocketDataResponse): SocketProcessor {
 
     override fun on(socket: Socket?) {
         socket?.on(Constants.BALL_ONLINE) {
