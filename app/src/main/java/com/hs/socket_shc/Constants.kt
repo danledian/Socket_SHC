@@ -1,13 +1,15 @@
 package com.hs.socket_shc
 
-public class Constants {
+class Constants {
 
     companion object{
-        val BALL_ONLINE: String = "ball_online"
-        val CLIENT_ENTER: String = "clientEnter"
+        const val BALL_ONLINE: String = "ball_online"//球在线
+        const val CLIENT_ENTER: String = "clientEnter"//客户进入
+        const val CLIENT_LEAVE: String = "clientLeave"//客户离开
+        const val CLIENT_ID = "clientId"//客户ID
     }
 
-    public enum class ConnectStatus{
+    enum class ConnectStatus{
 
         DISCONNECTED, CONNECTING, CONNECTED
     }
