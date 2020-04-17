@@ -4,5 +4,5 @@ import io.socket.client.Socket
 
 interface SocketProcessor{
 
-    fun execute(socket: Socket?)
+    fun on(socket: Socket?)
 }

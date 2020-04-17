@@ -1,43 +1,37 @@
 package com.hs.socket_shc.internet.socket.ball
 
-import android.text.TextUtils
 import android.util.Log
 import com.hs.socket_shc.Constants
 import io.socket.client.Socket
+import org.json.JSONException
 import org.json.JSONObject
 import java.util.*
 
 private const val TAG = "ClientOnlineProcessor"
-class ClientOnlineProcessor(): SocketProcessor {
+class ClientOnlineProcessor(private val listener: SocketDataResponse): SocketProcessor {
 
-    private var orgId: String? = null
-
-    override fun execute(socket: Socket?) {
+    override fun on(socket: Socket?) {
         socket?.on(Constants.BALL_ONLINE) {
                 Log.i(TAG, "Constants.BALL_ONLINE ${Arrays.toString(it)}")
-                if(it != null && it.isNotEmpty()){
-                    val json = JSONObject(it[0].toString())
-                    val count = json.optInt(orgId)
-                    Log.i(TAG, "$orgId's count is $count")
-                    if(count > 0){
-
-                    }
-                }
+                onResponse(Constants.BALL_ONLINE, it)
             }
             ?.on(Constants.CLIENT_ENTER) {
                 Log.i(TAG, "Constants.CLIENT_ENTER ${Arrays.toString(it)}")
-                if(it != null && it.isNotEmpty()){
-                    val json = JSONObject(it[0].toString())
-                    val clientId = json.optString(Constants.CLIENT_ID)
-                    if (TextUtils.isEmpty(clientId) && clientId == orgId){
-
-                    }
-                }
+                onResponse(Constants.CLIENT_ENTER, it)
             }
             ?.on(Constants.CLIENT_LEAVE){
-                Log.i(TAG, "Constants.CLIENT_ENTER ${Arrays.toString(it)}")
-
+                Log.i(TAG, "Constants.CLIENT_LEAVE ${Arrays.toString(it)}")
+                onResponse(Constants.CLIENT_LEAVE, it)
             }
+    }
+
+    private fun onResponse(action: String, it: Array<Any>?){
+        try {
+            val json = if(it != null && it.isNotEmpty()) JSONObject(it[0].toString()) else null
+            listener.onResponse(action, json)
+        }catch (exception: JSONException){
+            listener.onResponse(action, null)
+        }
     }
 
 }
