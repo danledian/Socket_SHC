@@ -1,10 +1,10 @@
 package com.hs.socket_shc.view.main
 
 import android.util.Log
-import com.hs.socket_shc.Constants
-import com.hs.socket_shc.Constants.Companion.BALL_AHI_UPDATE
-import com.hs.socket_shc.Constants.Companion.BALL_ONLINE
-import com.hs.socket_shc.Constants.Companion.CLIENT_ID
+import com.hs.socket_shc.SocketConstants
+import com.hs.socket_shc.SocketConstants.Companion.BALL_AHI_UPDATE
+import com.hs.socket_shc.SocketConstants.Companion.BALL_ONLINE
+import com.hs.socket_shc.SocketConstants.Companion.CLIENT_ID
 import com.hs.socket_shc.base.BasePresenter
 import com.hs.socket_shc.internet.socket.ball.BallSocketClientManager
 import com.hs.socket_shc.internet.socket.ball.SocketDataListener
@@ -23,7 +23,7 @@ class MainPresenter: BasePresenter<MainInterface.IMainView>(), MainInterface.IMa
     private var isSend: Boolean = false
 
     override fun changeConnect(uri: String) {
-        if(BallSocketClientManager.getConnectStatus() == Constants.ConnectStatus.CONNECTED){
+        if(BallSocketClientManager.getConnectStatus() == SocketConstants.ConnectStatus.CONNECTED){
             disconnect()
         }else{
             connect(uri)
@@ -68,7 +68,7 @@ class MainPresenter: BasePresenter<MainInterface.IMainView>(), MainInterface.IMa
         timer = Timer()
         timerTask = object: TimerTask(){
             override fun run() {
-                if(BallSocketClientManager.getConnectStatus() == Constants.ConnectStatus.CONNECTED){
+                if(BallSocketClientManager.getConnectStatus() == SocketConstants.ConnectStatus.CONNECTED){
                     BallSocketClientManager.getSocket()?.emit(BALL_AHI_UPDATE, "{\"AHI\"${Random().nextInt(100)}}")
                 }
             }
@@ -83,10 +83,10 @@ class MainPresenter: BasePresenter<MainInterface.IMainView>(), MainInterface.IMa
         timer = null
     }
 
-    override fun onConnectStatusChange(connectStatus: Constants.ConnectStatus) {
+    override fun onConnectStatusChange(connectStatus: SocketConstants.ConnectStatus) {
         Log.i(TAG, "status change is ${connectStatus.name}")
         rootView?.showButtonConnectStatus(connectStatus)
-        if(connectStatus == Constants.ConnectStatus.CONNECTED){
+        if(connectStatus == SocketConstants.ConnectStatus.CONNECTED){
             BallSocketClientManager.getSocket()?.emit(BALL_ONLINE)
         }
     }

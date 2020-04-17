@@ -1,10 +1,10 @@
 package com.hs.socket_shc.internet.socket.ball
 
 import android.util.Log
-import com.hs.socket_shc.Constants
-import com.hs.socket_shc.Constants.Companion.BALL_ONLINE
-import com.hs.socket_shc.Constants.Companion.CLIENT_ENTER
-import com.hs.socket_shc.Constants.Companion.CLIENT_LEAVE
+import com.hs.socket_shc.SocketConstants
+import com.hs.socket_shc.SocketConstants.Companion.BALL_ONLINE
+import com.hs.socket_shc.SocketConstants.Companion.CLIENT_ENTER
+import com.hs.socket_shc.SocketConstants.Companion.CLIENT_LEAVE
 import com.hs.socket_shc.internet.socket.connect.SocketClient
 import com.hs.socket_shc.internet.socket.connect.listener.SocketClientStatusChangeListener
 import io.socket.client.Socket
@@ -38,19 +38,19 @@ object BallSocketClientManager : SocketClientStatusChangeListener, SocketDataRes
         return mSocket
     }
 
-    override fun onConnectStatusChange(connectStatus: Constants.ConnectStatus) {
+    override fun onConnectStatusChange(connectStatus: SocketConstants.ConnectStatus) {
         Log.i(TAG, "connect status is ${connectStatus.name}")
         mSocketClientStatusChangeListener?.onConnectStatusChange(connectStatus)
     }
 
     fun disconnect() {
         Log.i(TAG, "disconnect")
-        if(getConnectStatus() != Constants.ConnectStatus.DISCONNECTED) mSocketClient?.disconnect()
+        if(getConnectStatus() != SocketConstants.ConnectStatus.DISCONNECTED) mSocketClient?.disconnect()
         mSocket = null
     }
 
-    fun getConnectStatus(): Constants.ConnectStatus{
-        return mSocketClient?.getConnectStatus() ?: Constants.ConnectStatus.DISCONNECTED
+    fun getConnectStatus(): SocketConstants.ConnectStatus{
+        return mSocketClient?.getConnectStatus() ?: SocketConstants.ConnectStatus.DISCONNECTED
     }
 
     fun setOnlineActionListener(socketDataListener: SocketDataListener){

@@ -1,7 +1,7 @@
 package com.hs.socket_shc.internet.socket.ball
 
 import android.util.Log
-import com.hs.socket_shc.Constants
+import com.hs.socket_shc.SocketConstants
 import io.socket.client.Socket
 import org.json.JSONException
 import org.json.JSONObject
@@ -11,17 +11,17 @@ private const val TAG = "SocketDataProcessor"
 class SocketDataProcessor(private val listener: SocketDataResponse): SocketProcessor {
 
     override fun on(socket: Socket?) {
-        socket?.on(Constants.BALL_ONLINE) {
-                Log.i(TAG, "Constants.BALL_ONLINE ${Arrays.toString(it)}")
-                onResponse(Constants.BALL_ONLINE, it)
+        socket?.on(SocketConstants.BALL_ONLINE) {
+                Log.i(TAG, "SocketConstants.BALL_ONLINE ${Arrays.toString(it)}")
+                onResponse(SocketConstants.BALL_ONLINE, it)
             }
-            ?.on(Constants.CLIENT_ENTER) {
-                Log.i(TAG, "Constants.CLIENT_ENTER ${Arrays.toString(it)}")
-                onResponse(Constants.CLIENT_ENTER, it)
+            ?.on(SocketConstants.CLIENT_ENTER) {
+                Log.i(TAG, "SocketConstants.CLIENT_ENTER ${Arrays.toString(it)}")
+                onResponse(SocketConstants.CLIENT_ENTER, it)
             }
-            ?.on(Constants.CLIENT_LEAVE){
-                Log.i(TAG, "Constants.CLIENT_LEAVE ${Arrays.toString(it)}")
-                onResponse(Constants.CLIENT_LEAVE, it)
+            ?.on(SocketConstants.CLIENT_LEAVE){
+                Log.i(TAG, "SocketConstants.CLIENT_LEAVE ${Arrays.toString(it)}")
+                onResponse(SocketConstants.CLIENT_LEAVE, it)
             }
     }
 

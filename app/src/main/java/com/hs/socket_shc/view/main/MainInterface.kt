@@ -1,6 +1,6 @@
 package com.hs.socket_shc.view.main
 
-import com.hs.socket_shc.Constants
+import com.hs.socket_shc.SocketConstants
 import com.hs.socket_shc.base.IPresenter
 import com.hs.socket_shc.base.IView
 
@@ -15,6 +15,6 @@ class MainInterface {
 
     interface IMainView: IView{
 
-        fun showButtonConnectStatus(status: Constants.ConnectStatus)
+        fun showButtonConnectStatus(status: SocketConstants.ConnectStatus)
     }
 }

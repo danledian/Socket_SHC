@@ -1,8 +1,8 @@
 package com.hs.socket_shc.internet.socket.connect.listener
 
-import com.hs.socket_shc.Constants
+import com.hs.socket_shc.SocketConstants
 
 interface SocketClientStatusChangeListener {
 
-    fun onConnectStatusChange(connectStatus: Constants.ConnectStatus)
+    fun onConnectStatusChange(connectStatus: SocketConstants.ConnectStatus)
 }

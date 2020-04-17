@@ -1,7 +1,7 @@
 package com.hs.socket_shc.view.main
 
 import android.view.View
-import com.hs.socket_shc.Constants
+import com.hs.socket_shc.SocketConstants
 import com.hs.socket_shc.R
 import com.hs.socket_shc.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -25,7 +25,7 @@ class MainActivity : BaseActivity(), MainInterface.IMainView{
         }
     }
 
-    override fun showButtonConnectStatus(status: Constants.ConnectStatus) {
+    override fun showButtonConnectStatus(status: SocketConstants.ConnectStatus) {
         bt_connect.text = status.name
     }
 

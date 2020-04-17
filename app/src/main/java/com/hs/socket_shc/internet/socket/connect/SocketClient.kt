@@ -1,7 +1,7 @@
 package com.hs.socket_shc.internet.socket.connect
 
 import android.util.Log
-import com.hs.socket_shc.Constants
+import com.hs.socket_shc.SocketConstants
 import com.hs.socket_shc.internet.socket.connect.listener.SocketClientStatusChangeListener
 import io.socket.client.IO
 import io.socket.client.Socket
@@ -13,7 +13,7 @@ open class SocketClient: ISocketClient {
 
     private var socket: Socket? = null
     private var socketClientStatusChangeListener: SocketClientStatusChangeListener? = null
-    private var connectStatus: Constants.ConnectStatus = Constants.ConnectStatus.DISCONNECTED
+    private var connectStatus: SocketConstants.ConnectStatus = SocketConstants.ConnectStatus.DISCONNECTED
 
 
     override fun connect(uri : String): Socket{
@@ -21,19 +21,19 @@ open class SocketClient: ISocketClient {
         socket = IO.socket(uri)
         socket!!.on(Socket.EVENT_CONNECT) {
                 Log.i(TAG, "connected")
-                updateConnectStatus(Constants.ConnectStatus.CONNECTED)
+                updateConnectStatus(SocketConstants.ConnectStatus.CONNECTED)
             }
             .on(Socket.EVENT_CONNECTING){
                 Log.i(TAG, Socket.EVENT_CONNECTING)
-                updateConnectStatus(Constants.ConnectStatus.CONNECTING)
+                updateConnectStatus(SocketConstants.ConnectStatus.CONNECTING)
             }
             .on(Socket.EVENT_CONNECT_ERROR){
                 Log.i(TAG, Arrays.toString(it))
-                updateConnectStatus(Constants.ConnectStatus.DISCONNECTED)
+                updateConnectStatus(SocketConstants.ConnectStatus.DISCONNECTED)
             }
             .on(Socket.EVENT_DISCONNECT) {
                 Log.i(TAG, Socket.EVENT_DISCONNECT)
-                updateConnectStatus(Constants.ConnectStatus.DISCONNECTED)
+                updateConnectStatus(SocketConstants.ConnectStatus.DISCONNECTED)
             }
         socket!!.connect()
         Log.i(TAG, "after connect")
@@ -45,11 +45,11 @@ open class SocketClient: ISocketClient {
         socket = null
     }
 
-    override fun getConnectStatus(): Constants.ConnectStatus {
+    override fun getConnectStatus(): SocketConstants.ConnectStatus {
         return connectStatus
     }
 
-    private fun updateConnectStatus(connectStatus: Constants.ConnectStatus){
+    private fun updateConnectStatus(connectStatus: SocketConstants.ConnectStatus){
         if(this.connectStatus == connectStatus){
             return
         }

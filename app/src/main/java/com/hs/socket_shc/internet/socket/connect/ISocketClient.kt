@@ -1,6 +1,6 @@
 package com.hs.socket_shc.internet.socket.connect
 
-import com.hs.socket_shc.Constants
+import com.hs.socket_shc.SocketConstants
 import com.hs.socket_shc.internet.socket.connect.listener.SocketClientStatusChangeListener
 import io.socket.client.Socket
 
@@ -10,7 +10,7 @@ interface ISocketClient{
 
     fun disconnect()
 
-    fun getConnectStatus(): Constants.ConnectStatus
+    fun getConnectStatus(): SocketConstants.ConnectStatus
 
     fun registerStatusChangeListener(socketClientStatusChangeListener: SocketClientStatusChangeListener)
 

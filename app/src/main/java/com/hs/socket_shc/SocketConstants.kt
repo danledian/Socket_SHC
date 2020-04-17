@@ -1,6 +1,6 @@
 package com.hs.socket_shc
 
-class Constants {
+class SocketConstants {
 
     companion object{
 
